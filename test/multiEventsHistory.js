@@ -1,5 +1,5 @@
-const MultiEventsHistory = artifacts.require('./MultiEventsHistory.sol')
-const FakeEventsEmitter = artifacts.require('./stubs/FakeEventsEmitter.sol')
+const MultiEventsHistory = artifacts.require('MultiEventsHistory')
+const FakeEventsEmitter = artifacts.require('FakeEventsEmitter')
 
 contract("MultiEventsHistory", function(accounts) {
     let eventsHistory

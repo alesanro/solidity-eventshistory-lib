@@ -1,5 +1,5 @@
-const EventsHistory = artifacts.require('./EventsHistory.sol')
-const FakeEventsEmitter = artifacts.require('./stubs/FakeEventsEmitter.sol')
+const EventsHistory = artifacts.require('EventsHistory')
+const FakeEventsEmitter = artifacts.require('FakeEventsEmitter')
 
 contract("EventsHistory", function() {
     const fakeArgs = [0,0,0,0,0,0,0,0];

@@ -1,6 +1,6 @@
 pragma solidity ^0.4.8;
 
-import "solidity-shared-lib/contracts/Owned.sol";
+import "solidity-shared-lib/contracts/Object.sol";
 
 /**
  * @title Events History universal contract.
@@ -12,7 +12,7 @@ import "solidity-shared-lib/contracts/Owned.sol";
  * Note: all the non constant functions return false instead of throwing in case if state change
  * didn't happen yet.
  */
-contract EventsHistory is Owned {
+contract EventsHistory is Object {
     // Event emitter signature to address with Event definiton mapping.
     mapping(bytes4 => address) public emitters;
 
