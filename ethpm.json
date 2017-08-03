@@ -1,0 +1,18 @@
+{
+  "package-name": "solidity-eventshistory-lib",
+  "version": "0.1.0",
+  "description": "Provides an access to an events history set of contracts",
+  "authors": [
+    "Mike Fluff <mf@mikefluff.com> (http://mikefluff.com)"
+  ],
+  "keywords": [
+    "solidity",
+    "ethereum",
+    "contracts",
+    "events-history"
+  ],
+  "dependencies": {
+      "solidity-shared-lib": "^0.1.0"
+  },
+  "license": "GPL-3.0"
+}
