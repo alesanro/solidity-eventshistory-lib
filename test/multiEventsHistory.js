@@ -46,6 +46,16 @@ contract("MultiEventsHistory", function(accounts) {
         })
     })
 
+    it("rejection put away access rights from previsously authorized address", function() {
+        var nonAuthorized = accounts[3]
+        return eventsHistory.authorize(nonAuthorized)
+        .then(() => eventsHistory.isAuthorized(nonAuthorized))
+        .then(result => assert.isOk(result))
+        .then(() => eventsHistory.reject(nonAuthorized))
+        .then(() => eventsHistory.isAuthorized(nonAuthorized))
+        .then(result => assert.isNotOk(result))
+    })
+
     context("event emitting", function() {
         it("can't emit an event with for unauthorized sender", function() {
             var data = eventsEmitterAbi.emitEvent1.getData('event1 payload')
