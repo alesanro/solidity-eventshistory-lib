@@ -1,13 +1,13 @@
-const MultiEventsHistory = artifacts.require('MultiEventsHistory')
+const MultiEventsHistoryStub = artifacts.require('MultiEventsHistoryStub')
 const FakeEventsEmitter = artifacts.require('FakeEventsEmitter')
 
-contract("MultiEventsHistory", function(accounts) {
+contract("MultiEventsHistoryStub", function(accounts) {
     let eventsHistory
     let eventsEmitter
     let eventsEmitterAbi
 
     before("setup", function(done) {
-        MultiEventsHistory.deployed()
+        MultiEventsHistoryStub.deployed()
         .then((instance) => eventsHistory = instance)
         .then(() => FakeEventsEmitter.deployed())
         .then((instance) => eventsEmitter = instance)

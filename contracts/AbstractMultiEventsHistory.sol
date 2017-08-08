@@ -1,7 +1,5 @@
 pragma solidity ^0.4.8;
 
-import "solidity-shared-lib/contracts/Object.sol";
-
 /**
 * @title Events History universal multi contract.
 *
@@ -11,9 +9,20 @@ import "solidity-shared-lib/contracts/Object.sol";
 * Note: all the non constant functions return false instead of throwing in case if state change
 * didn't happen yet.
 */
-contract MultiEventsHistory is Object {
-    // Authorized calling contracts.
+contract AbstractMultiEventsHistory {
+    /**
+    * @title  Authorized calling contracts.
+    */
     mapping(address => bool) public isAuthorized;
+
+    /**
+    * Check access rights for a caller.
+    * @dev Should be overridden by ancestors
+    */
+    modifier auth() {
+        throw;
+        _;
+    }
 
     /**
     * Authorize new caller contract.
@@ -22,7 +31,7 @@ contract MultiEventsHistory is Object {
     *
     * @return success.
     */
-    function authorize(address _caller) onlyContractOwner() returns(bool) {
+    function authorize(address _caller) auth() returns(bool) {
         if (isAuthorized[_caller]) {
             return false;
         }
@@ -35,7 +44,7 @@ contract MultiEventsHistory is Object {
     *
     * @param _caller address of the caller.
     */
-    function reject(address _caller) onlyContractOwner() {
+    function reject(address _caller) auth() {
         delete isAuthorized[_caller];
     }
 
