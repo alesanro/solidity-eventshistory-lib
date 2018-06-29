@@ -16,10 +16,7 @@
     "events-history"
   ],
   "dependencies": {
-    "truffle": "3.4.3",
-    "truffle-hdwallet-provider": "mikefluff/truffle-hdwallet-provider",
-    "ethereumjs-testrpc": "3.0.5",
-    "solidity-shared-lib": "alesanro/solidity-shared-lib#feature\/MINT-246"
+    "solidity-shared-lib": "ChronoBank/solidity-shared-lib.git"
   },
   "repository": {
     "type": "git",
@@ -30,5 +27,9 @@
   "bugs": {
     "url": "https://github.com/ChronoBank/solidity-eventshistory-lib/issues"
   },
-  "homepage": "https://github.com/ChronoBank/solidity-eventshistory-lib#readme"
+  "homepage": "https://github.com/ChronoBank/solidity-eventshistory-lib#readme",
+  "devDependencies": {
+    "ganache-cli": "^6.1.4",
+    "truffle": "^4.1.13"
+  }
 }
