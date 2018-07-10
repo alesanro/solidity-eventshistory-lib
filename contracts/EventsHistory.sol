@@ -1,6 +1,8 @@
-pragma solidity ^0.4.8;
+pragma solidity ^0.4.21;
+
 
 import "solidity-shared-lib/contracts/Owned.sol";
+
 
 /**
  * @title Events History universal contract.
@@ -44,7 +46,11 @@ contract EventsHistory is Owned {
      *
      * @return success.
      */
-    function addEmitter(bytes4 _eventSignature, address _emitter) onlyContractOwner() returns(bool) {
+    function addEmitter(bytes4 _eventSignature, address _emitter) 
+    external
+    onlyContractOwner
+    returns (bool) 
+    {
         if (emitters[_eventSignature] != 0x0) {
             return false;
         }
@@ -64,7 +70,15 @@ contract EventsHistory is Owned {
      *
      * @return success.
      */
-    function addVersion(address _caller, string _name, string _changelog) onlyContractOwner() returns(bool) {
+    function addVersion(
+        address _caller, 
+        string _name, 
+        string _changelog
+    ) 
+    external
+    onlyContractOwner 
+    returns (bool) 
+    {
         if (versions[_caller] != 0) {
             return false;
         }
@@ -88,7 +102,7 @@ contract EventsHistory is Owned {
      *
      * Throws if emit function signature is not registered, or call failed.
      */
-    function () {
+    function () external {
         if (versions[msg.sender] == 0) {
             return;
         }
@@ -96,7 +110,7 @@ contract EventsHistory is Owned {
         // Call Stack Depth Limit reached: n/a after HF 4;
         // Recursive Call: safe, all changes already made.
         if (!emitters[msg.sig].delegatecall(msg.data)) {
-            throw;
+            revert("[EventsHistory] Cannot delegatecall to an emitter");
         }
     }
 }

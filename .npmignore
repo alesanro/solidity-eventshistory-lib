@@ -1,0 +1,14 @@
+build/
+migrations/
+test/
+ethpm.json
+
+contracts/stubs
+contracts/Migrations.sol
+
+.solcover*
+
+.gitattributes
+.eslint*
+.solium*
+truffle*

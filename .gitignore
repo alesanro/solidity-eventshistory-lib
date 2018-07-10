@@ -4,5 +4,8 @@ build/
 node_modules/
 .idea/
 
+coverage/
+coverage*
+
 *.log
 *.bac
