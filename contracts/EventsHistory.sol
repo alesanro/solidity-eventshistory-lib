@@ -110,7 +110,7 @@ contract EventsHistory is Owned {
         // Call Stack Depth Limit reached: n/a after HF 4;
         // Recursive Call: safe, all changes already made.
         if (!emitters[msg.sig].delegatecall(msg.data)) {
-            revert("[EventsHistory] Cannot delegatecall to an emitter");
+            revert();
         }
     }
 }

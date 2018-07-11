@@ -21,7 +21,7 @@
     "events-history"
   ],
   "dependencies": {
-    "solidity-shared-lib": "ChronoBank/solidity-shared-lib.git#develop"
+    "solidity-shared-lib": "alesanro/solidity-shared-lib.git#solc-downgrade-v0.4.21"
   },
   "repository": {
     "type": "git",
@@ -34,8 +34,8 @@
   },
   "homepage": "https://github.com/ChronoBank/solidity-eventshistory-lib#readme",
   "devDependencies": {
-    "ganache-cli": "^6.1.4",
-    "truffle": "^4.1.13",
+    "ganache-cli": "6.1.0",
+    "truffle": "4.1.5",
     "babel-polyfill": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-register": "^6.26.0",

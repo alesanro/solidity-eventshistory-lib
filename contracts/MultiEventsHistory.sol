@@ -77,7 +77,7 @@ contract MultiEventsHistory is Owned {
         // Internal Out Of Gas/Throw: revert this transaction too;
         // Recursive Call: safe, all changes already made.
         if (!msg.sender.delegatecall(msg.data)) {
-            revert("[MultiEventsHistory] Cannot delegatecall to a sender");
+            revert();
         }
     }
 }
