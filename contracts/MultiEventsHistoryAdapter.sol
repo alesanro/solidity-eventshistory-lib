@@ -20,7 +20,8 @@ contract MultiEventsHistoryAdapter {
     view 
     returns (address) 
     {
-        return localEventsHistory;
+        address _eventsHistory = localEventsHistory;
+        return _eventsHistory != 0x0 ? _eventsHistory : this;
     }
 
     function emitErrorCode(uint _errorCode) public {

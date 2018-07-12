@@ -11,9 +11,7 @@ contract("EventsHistory", function() {
 	let eventsEmitter
 	let eventsEmitterAbi
 	let incorrectEmitterInterfaceAbi
-	const zero = {
-		address: "0x0000000000000000000000000000000000000000",
-	}
+	const zero = { address: "0x0000000000000000000000000000000000000000", }
 
 	before("setup", async () => {
 		eventsHistory = await EventsHistory.deployed()

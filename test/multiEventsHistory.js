@@ -15,12 +15,10 @@ contract("MultiEventsHistory", function(accounts) {
 		user2: accounts[2],
 	}
 
-	let snapshotId
+	const zero = { address: "0x0000000000000000000000000000000000000000", }
 
 	before("setup", async () => {
 		await reverter.promisifySnapshot()
-
-		snapshotId = reverter.snapshotId
 
 		eventsHistory = await MultiEventsHistory.deployed()
 		eventsEmitter = await FakeEventsEmitter.deployed()
@@ -29,7 +27,34 @@ contract("MultiEventsHistory", function(accounts) {
 	})
 
 	after(async () => {
-		await reverter.promisifyRevert(snapshotId)
+		await reverter.promisifyRevert(0)
+	})
+
+	describe("initial", () => {
+
+		after(async () => {
+			await reverter.promisifyRevert()
+		})
+
+		it("without set up events history default emitter should be there", async () => {
+			assert.notEqual(
+				await eventsEmitter.getEventsHistory(),
+				zero.address
+			)
+			assert.equal(
+				await eventsEmitter.getEventsHistory(),
+				eventsEmitter.address
+			)
+		})
+
+		it("should allow to set up another events history", async () => {
+			const newEventsHistory = "0xff000000000000000000000000000000000000ff"
+			await eventsEmitter.setEventsHistory(newEventsHistory)
+			assert.equal(
+				await eventsEmitter.getEventsHistory(),
+				newEventsHistory
+			)
+		})
 	})
 
 	describe("authorization", () => {
