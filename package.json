@@ -21,7 +21,7 @@
     "events-history"
   ],
   "dependencies": {
-    "solidity-shared-lib": "alesanro/solidity-shared-lib.git#solc-downgrade-v0.4.21"
+    "solidity-shared-lib": "alesanro/solidity-shared-lib#solc-downgrade-v0.4.21"
   },
   "repository": {
     "type": "git",
